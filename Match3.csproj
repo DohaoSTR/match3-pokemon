@@ -79,6 +79,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\GameState.cs" />
     <Compile Include="Model\Settings.cs" />
     <Compile Include="View\GameAnimator.cs" />
     <Compile Include="View\GameWindow.xaml.cs">
@@ -158,28 +159,28 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\Blue.png" />
-    <Resource Include="img\Bomb.png" />
-    <Resource Include="img\BombBlue.png" />
-    <Resource Include="img\BombGreen.png" />
-    <Resource Include="img\BombPink.png" />
-    <Resource Include="img\BombRed.png" />
-    <Resource Include="img\BombYellow.png" />
-    <Resource Include="img\Green.png" />
-    <Resource Include="img\Line.png" />
-    <Resource Include="img\LineBlue.png" />
-    <Resource Include="img\LineBlueH.png" />
-    <Resource Include="img\LineGreen.png" />
-    <Resource Include="img\LineGreenH.png" />
-    <Resource Include="img\LinePink.png" />
-    <Resource Include="img\LinePinkH.png" />
-    <Resource Include="img\LineRed.png" />
-    <Resource Include="img\LineRedH.png" />
-    <Resource Include="img\LineYellow.png" />
-    <Resource Include="img\LineYellowH.png" />
-    <Resource Include="img\Pink.png" />
-    <Resource Include="img\Red.png" />
-    <Resource Include="img\yellow.png" />
+    <Resource Include="Images\Blue.png" />
+    <Resource Include="Images\Bomb.png" />
+    <Resource Include="Images\BombBlue.png" />
+    <Resource Include="Images\BombGreen.png" />
+    <Resource Include="Images\BombPink.png" />
+    <Resource Include="Images\BombRed.png" />
+    <Resource Include="Images\BombYellow.png" />
+    <Resource Include="Images\Green.png" />
+    <Resource Include="Images\Line.png" />
+    <Resource Include="Images\LineBlue.png" />
+    <Resource Include="Images\LineBlueH.png" />
+    <Resource Include="Images\LineGreen.png" />
+    <Resource Include="Images\LineGreenH.png" />
+    <Resource Include="Images\LinePink.png" />
+    <Resource Include="Images\LinePinkH.png" />
+    <Resource Include="Images\LineRed.png" />
+    <Resource Include="Images\LineRedH.png" />
+    <Resource Include="Images\LineYellow.png" />
+    <Resource Include="Images\LineYellowH.png" />
+    <Resource Include="Images\Pink.png" />
+    <Resource Include="Images\Red.png" />
+    <Resource Include="Images\yellow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />

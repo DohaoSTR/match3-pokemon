@@ -14,6 +14,7 @@ namespace Match3.Model
         {
             _gridSize = gridSize;
             _figures = new Figure[_gridSize, _gridSize];
+
             RandomFill();
         }
 
@@ -40,6 +41,7 @@ namespace Match3.Model
                     }
                 }
             }
+
             return isMatched;
         }
 
@@ -47,6 +49,7 @@ namespace Match3.Model
         {
             var firstTry = ExecuteMatch(secondPosition, ref _figures[secondPosition.X, secondPosition.Y]);
             var secondTry = ExecuteMatch(firstPosition, ref _figures[firstPosition.X, firstPosition.Y]);
+
             return (firstTry || secondTry);
         }
 
@@ -54,6 +57,7 @@ namespace Match3.Model
         {
             dropsFrom = new List<Vector2>();
             dropsTo = new List<Vector2>();
+
             for (int i = 0; i < _gridSize; i++)
             {
                 int gap = 0;
@@ -66,6 +70,7 @@ namespace Match3.Model
                     else
                     {
                         SwapFigures(i, j + gap, i, j);
+
                         dropsFrom.Add(new Vector2(i, j));
                         dropsTo.Add(new Vector2(i, j + gap));
                     }
@@ -76,6 +81,7 @@ namespace Match3.Model
         public void RandomFill()
         {
             var figureTypes = Enum.GetValues(typeof(FigureType));
+
             for (int i = 0; i < _gridSize; i++)
             {
                 for (int j = 0; j < _gridSize; j++)
@@ -94,7 +100,9 @@ namespace Match3.Model
             var matchList = GetMatchList(position, firstFigure.Type);
 
             if (matchList.Count == 0)
+            {
                 return false;
+            }
 
             if (Game.IsInitialized && !TrySetBonus(matchList, ref firstFigure))
             {
@@ -105,6 +113,7 @@ namespace Match3.Model
             {
                 figure.Destroy(_figures);
             }
+
             return true;
         }
 
@@ -112,21 +121,24 @@ namespace Match3.Model
         {
             bool isEnoughForBomb = match.Count >= 4;
             bool isEnoughForLine = match.Count == 3;
+
             if (isEnoughForBomb)
             {
-                figureToSet = (Figure)new Bomb(figureToSet);
+                figureToSet = new Bomb(figureToSet);
                 return true;
             }
+
             if (isEnoughForLine)
             {
                 if (match[0].Position.X == figureToSet.Position.X)
                 {
-                    figureToSet = (Figure)new VerticalLine(figureToSet);
+                    figureToSet = new VerticalLine(figureToSet);
                 }
                 else
                 {
-                    figureToSet = (Figure)new HorizontalLine(figureToSet);
+                    figureToSet = new HorizontalLine(figureToSet);
                 }
+
                 return true;
             }
 
@@ -142,19 +154,27 @@ namespace Match3.Model
         {
             int horCounter = position.X + 1;
             int vertCounter = position.Y + 1;
+
             var verticalLine = new List<Figure>();
             var horizontalLine = new List<Figure>();
+
             while (horCounter < _gridSize)
             {
                 if (_figures[horCounter, position.Y].Type != type)
+                {
                     break;
+                }
+
                 horizontalLine.Add(_figures[horCounter, position.Y]);
                 horCounter++;
             }
             while (vertCounter < _gridSize)
             {
                 if (_figures[position.X, vertCounter].Type != type)
+                {
                     break;
+                }
+
                 verticalLine.Add(_figures[position.X, vertCounter]);
                 vertCounter++;
             }
@@ -164,14 +184,21 @@ namespace Match3.Model
             while (horCounter >= 0)
             {
                 if (_figures[horCounter, position.Y].Type != type)
+                {
                     break;
+                }
+
                 horizontalLine.Add(_figures[horCounter, position.Y]);
                 horCounter--;
             }
+
             while (vertCounter >= 0)
             {
                 if (_figures[position.X, vertCounter].Type != type)
+                {
                     break;
+                }
+
                 verticalLine.Add(_figures[position.X, vertCounter]);
                 vertCounter--;
             }
@@ -180,6 +207,7 @@ namespace Match3.Model
             {
                 verticalLine.Clear();
             }
+
             if (horizontalLine.Count < 2)
             {
                 horizontalLine.Clear();

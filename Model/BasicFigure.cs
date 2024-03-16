@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Media.Imaging;
+﻿using System.Windows.Media.Imaging;
 
 namespace Match3.Model
 {
@@ -16,34 +15,30 @@ namespace Match3.Model
         public override void Destroy(Figure[,] list)
         {
             if (IsNullObject)
+            {
                 return;
+            }
+
             Game.AddScore(PointsForDestroying);
             IsNullObject = true;
         }
 
         public override BitmapImage GetBitmapImage()
         {
-            Uri uriSource;
             switch (Type)
             {
                 case FigureType.Red:
-                    uriSource = new Uri(@"pack://application:,,,/img/Red.png");
-                    return new BitmapImage(uriSource);
+                    return GetBitmapImage("Red");
                 case FigureType.Blue:
-                    uriSource = new Uri(@"pack://application:,,,/img/Blue.png");
-                    return new BitmapImage(uriSource);
+                    return GetBitmapImage("Blue");
                 case FigureType.Green:
-                    uriSource = new Uri(@"pack://application:,,,/img/Green.png");
-                    return new BitmapImage(uriSource);
+                    return GetBitmapImage("Green");
                 case FigureType.Yellow:
-                    uriSource = new Uri(@"pack://application:,,,/img/Yellow.png");
-                    return new BitmapImage(uriSource);
+                    return GetBitmapImage("Yellow");
                 case FigureType.Pink:
-                    uriSource = new Uri(@"pack://application:,,,/img/Pink.png");
-                    return new BitmapImage(uriSource);
+                    return GetBitmapImage("Pink");
                 default:
-                    uriSource = new Uri(@"pack://application:,,,/img/Yellow.png");
-                    return new BitmapImage(uriSource);
+                    return GetBitmapImage("Yellow");
             }
         }
 

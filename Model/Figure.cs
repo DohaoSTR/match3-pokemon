@@ -1,4 +1,5 @@
-﻿using System.Windows.Media.Imaging;
+﻿using System;
+using System.Windows.Media.Imaging;
 
 namespace Match3.Model
 {
@@ -13,5 +14,11 @@ namespace Match3.Model
         public abstract void Destroy(Figure[,] list);
 
         public abstract BitmapImage GetBitmapImage();
+
+        public static BitmapImage GetBitmapImage(string imageName)
+        {
+            Uri uriSource = new Uri(App.ImagesPath + imageName + ".png");
+            return new BitmapImage(uriSource);
+        }
     }
 }

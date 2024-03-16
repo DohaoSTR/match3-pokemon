@@ -10,16 +10,18 @@ namespace Match3.View
 {
     public partial class GameWindow : Window
     {
-        private Settings _settings;
+        private readonly Settings _settings;
 
         public static int GridSize;
         public const int CellSizePx = 70;
         public const int CanvasTop = 0;
         public const int CanvasLeft = 0;
+
         private readonly int TimeForGame;
 
         private Dictionary<Vector2, Image> _images;
         private Dictionary<Vector2, Button> _buttons;
+
         private Game _game;
         private GameAnimator _animator;
 
@@ -161,24 +163,31 @@ namespace Match3.View
                 {
                     var position = new Vector2(i, j);
                     if (Game.IsInitialized && _isWindowInitialized)
+                    {
                         CanvasLayout.Children.Remove(_images[position]);
+                    }
 
                     var figure = _game.GetFigure(position);
                     if (figure.IsNullObject)
+                    {
                         continue;
+                    }    
 
                     var image = new Image
                     {
                         Source = _game.GetFigure(position).GetBitmapImage(),
                         Width = CellSizePx
                     };
+
                     Canvas.SetTop(image, CanvasTop + CellSizePx * j);
                     Canvas.SetLeft(image, CanvasLeft + CellSizePx * i);
+
                     image.IsHitTestVisible = false;
                     CanvasLayout.Children.Add(image);
                     _images[position] = image;
                 }
             }
+
             UpdateScore();
             _isWindowInitialized = true;
         }
@@ -193,6 +202,7 @@ namespace Match3.View
         {
             Game.NullifyScore();
             UpdateScore();
+
             _timeSeconds = 0;
             _timer = new DispatcherTimer();
             _timer.Tick += UpdateTime;
@@ -203,18 +213,22 @@ namespace Match3.View
         private void UpdateTime(object sender, EventArgs e)
         {
             _timeSeconds++;
+
             if (_timeSeconds >= TimeForGame)
             {
                 _timer.Tick -= UpdateTime;
                 _timer = new DispatcherTimer();
+
                 var results = new ResultsWindow(_game.GetScore(), _settings)
                 {
                     Top = Top,
                     Left = Left
                 };
+
                 results.Show();
                 Close();
             }
+
             TimeText.Text = _timeSeconds.ToString();
         }
 
@@ -222,6 +236,7 @@ namespace Match3.View
         {
             var button = (Button)sender;
             var id = (Vector2)button.DataContext;
+
             _game.SelectFigure(id);
         }
 
@@ -233,10 +248,12 @@ namespace Match3.View
                 {
                     Width = new GridLength(CellSizePx)
                 };
+
                 var row = new RowDefinition()
                 {
                     Height = new GridLength(CellSizePx)
                 };
+
                 GridLayout.ColumnDefinitions.Add(column);
                 GridLayout.RowDefinitions.Add(row);
             }
@@ -251,8 +268,10 @@ namespace Match3.View
                         Background = new SolidColorBrush(color),
                         BorderThickness = new Thickness(0),
                         DataContext = new Vector2(i, j)
-                    };
+                    }; 
+
                     button.Click += GridClick;
+
                     Grid.SetColumn(button, i);
                     Grid.SetRow(button, j);
                     GridLayout.Children.Add(button);

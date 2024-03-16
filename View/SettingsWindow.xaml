@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Match3.View"
         mc:Ignorable="d"
-        Title="Три в ряд" Height="275" Width="400"
+        Title="Три в ряд" 
+        Height="275" 
+        Width="400"
         Background="Wheat">
     <Window.Resources>
         <ResourceDictionary>
@@ -20,48 +21,48 @@
 
     <Grid>
         <StackPanel Orientation="Vertical"
-                Margin="40 20 40 20">
+                    Margin="40 20 40 20">
             <StackPanel Orientation="Horizontal" 
-                    Height="50">
+                        Height="50">
                 <TextBlock Text="Время игры:"
-                   Foreground="Black"
-                   VerticalAlignment="Center"
-                   Margin="0 0 10 0"
-                   FontWeight="DemiBold"
-                   FontSize="16"/>
+                           Foreground="Black"
+                           VerticalAlignment="Center"
+                           Margin="0 0 10 0"
+                           FontWeight="DemiBold"
+                           FontSize="16"/>
 
                 <TextBox Text="1"
-                     VerticalAlignment="Center"
-                     Margin="0 0 10 0"
-                     FontSize="16"
-                     FontWeight="DemiBold"
-                     Width="50"
-                     x:Name="GameTimeTextBox"/>
+                         VerticalAlignment="Center"
+                         Margin="0 0 10 0"
+                         FontSize="16"
+                         FontWeight="DemiBold"
+                         Width="50"
+                         x:Name="GameTimeTextBox"/>
 
                 <TextBlock Text="(в секундах)"
-                   Foreground="Black"
-                   FontSize="16"
-                   FontWeight="DemiBold"
-                   VerticalAlignment="Center"
-                   Margin="0 0 15 0"/>
+                           Foreground="Black"
+                           FontSize="16"
+                           FontWeight="DemiBold"
+                           VerticalAlignment="Center"
+                           Margin="0 0 15 0"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" 
-                    Height="50">
+                        Height="50">
                 <TextBlock Text="Размер поля:"
-                   Foreground="Black"
-                   FontSize="16"
-                   FontWeight="DemiBold"
-                   VerticalAlignment="Center"
-                   Margin="0 0 10 0"/>
+                           Foreground="Black"
+                           FontSize="16"
+                           FontWeight="DemiBold"
+                           VerticalAlignment="Center"
+                           Margin="0 0 10 0"/>
 
                 <ComboBox x:Name="SizeChooseBox"
-                     SelectedIndex="2"
-                     VerticalAlignment="Center"
-                     FontSize="16"
-                     FontWeight="DemiBold"
-                     Margin="0 0 10 0"
-                     Width="60"/>
+                          SelectedIndex="2"
+                          VerticalAlignment="Center"
+                          FontSize="16"
+                          FontWeight="DemiBold"
+                          Margin="0 0 10 0"
+                          Width="60"/>
             </StackPanel>
 
             <Button Click="SaveSettingsButton_Click"

@@ -22,6 +22,7 @@ namespace Match3.View
                 Top = Top,
                 Left = Left
             };
+
             menu.Show();
             Close();
         }

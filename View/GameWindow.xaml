@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Match3.View"
         mc:Ignorable="d"
-        Title="Три в ряд" Height="675" Width="575"
+        Title="Три в ряд" 
+        Height="675" 
+        Width="575"
         ResizeMode="NoResize"
         Background="wheat">
     <Grid>
@@ -14,52 +15,60 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         
         <Menu Background="Wheat"
-          Foreground="Black"
-          Grid.Row="0"
-          FontSize="16"
-          FontWeight="DemiBold">
+              Foreground="Black"
+              Grid.Row="0"
+              FontSize="16"
+              FontWeight="DemiBold">
             <MenuItem Header="Настройки">
                 <MenuItem Header="Обновить игровое поле"
-                      Background="Wheat"
-                      BorderBrush="Wheat"
-                      FontSize="16"
-                      FontWeight="DemiBold"
-                       Click="ResetButton_Click"/>
+                          Background="Wheat"
+                          BorderBrush="Wheat"
+                          FontSize="16"
+                          FontWeight="DemiBold"
+                          Click="ResetButton_Click"/>
                 <MenuItem Header="Вернуться в меню"
-                      Background="Wheat"
-                      BorderBrush="Wheat"
-                      FontSize="16"
-                      FontWeight="DemiBold"
-                      Click="ReturnToMenuButton_Click"/>
+                          Background="Wheat"
+                          BorderBrush="Wheat"
+                          FontSize="16"
+                          FontWeight="DemiBold"
+                          Click="ReturnToMenuButton_Click"/>
             </MenuItem>
         </Menu>
 
         <StackPanel Orientation="Horizontal"
                     Grid.Row="1">
             <StackPanel Orientation="Horizontal"
-                    Margin="10">
-                <TextBlock Text="Счёт:" FontSize="24"
-                       Margin="0 0 10 0"/>
-                <TextBlock x:Name="ScoreText" Text="0" FontSize="24" TextAlignment="Left"
-                       Margin="0 0 10 0"/>
+                        Margin="10">
+                <TextBlock Text="Счёт:" 
+                           FontSize="24"
+                           Margin="0 0 10 0"/>
+                <TextBlock x:Name="ScoreText" 
+                           Text="0" 
+                           FontSize="24" 
+                           TextAlignment="Left"
+                           Margin="0 0 10 0"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal"
-                    Margin="10">
-                <TextBlock Text="Время игры:" FontSize="24"
-                       Margin="0 0 10 0"/>
-                <TextBlock x:Name="TimeText" Text="1" FontSize="24"
-                       Margin="0 0 10 0"/>
+                        Margin="10">
+                <TextBlock Text="Время игры:" 
+                           FontSize="24"
+                           Margin="0 0 10 0"/>
+                <TextBlock x:Name="TimeText" 
+                           Text="1" 
+                           FontSize="24"
+                           Margin="0 0 10 0"/>
             </StackPanel>
         </StackPanel>
         
         <Canvas x:Name="CanvasLayout"
-                 Grid.Row="2">
+                Grid.Row="2">
             <Grid x:Name="GridLayout"/>
         </Canvas>
     </Grid>

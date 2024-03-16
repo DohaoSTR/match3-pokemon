@@ -16,18 +16,21 @@ namespace Match3.View
                 To = figure.ActualWidth + 25,
                 Duration = TimeSpan.FromMilliseconds(200)
             };
+
             var heightAnimation = new DoubleAnimation()
             {
                 From = figure.ActualHeight,
                 To = figure.ActualHeight + 25,
                 Duration = TimeSpan.FromMilliseconds(200)
             };
+
             var opacityAnimation = new DoubleAnimation
             {
                 From = 1,
                 To = 0,
                 Duration = TimeSpan.FromMilliseconds(200)
             };
+
             figure.BeginAnimation(UIElement.OpacityProperty, opacityAnimation);
             figure.BeginAnimation(FrameworkElement.WidthProperty, widthAnimation);
             figure.BeginAnimation(FrameworkElement.HeightProperty, heightAnimation);
@@ -36,6 +39,7 @@ namespace Match3.View
         public void MoveAnimation(Image figure, Vector2 from, Vector2 to)
         {
             DoubleAnimation moveAnimation;
+
             if (from.X == to.X)
             {
                 moveAnimation = new DoubleAnimation
@@ -44,6 +48,7 @@ namespace Match3.View
                     To = GameWindow.CanvasTop + GameWindow.CellSizePx * to.Y,
                     Duration = TimeSpan.FromMilliseconds(100)
                 };
+
                 figure.BeginAnimation(Canvas.TopProperty, moveAnimation);
             }
             else
@@ -54,6 +59,7 @@ namespace Match3.View
                     To = GameWindow.CanvasLeft + GameWindow.CellSizePx * to.X,
                     Duration = TimeSpan.FromMilliseconds(100)
                 };
+
                 figure.BeginAnimation(Canvas.LeftProperty, moveAnimation);
             }
         }

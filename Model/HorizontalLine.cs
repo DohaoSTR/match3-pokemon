@@ -1,5 +1,4 @@
 ﻿using Match3.View;
-using System;
 using System.Windows.Media.Imaging;
 
 namespace Match3.Model
@@ -17,7 +16,10 @@ namespace Match3.Model
         public override void Destroy(Figure[,] list)
         {
             if (IsNullObject)
-                return;
+            { 
+                return; 
+            }
+
             Game.AddScore(PointsForDestroying);
             IsNullObject = true;
             ActivateBonus(list);
@@ -33,27 +35,20 @@ namespace Match3.Model
 
         public override BitmapImage GetBitmapImage()
         {
-            Uri uriSource;
             switch (Type)
             {
                 case FigureType.Red:
-                    uriSource = new Uri(@"pack://application:,,,/img/LineRedH.png");
-                    return new BitmapImage(uriSource);
+                    return GetBitmapImage("LineRedH");
                 case FigureType.Blue:
-                    uriSource = new Uri(@"pack://application:,,,/img/LineBlueH.png");
-                    return new BitmapImage(uriSource);
+                    return GetBitmapImage("LineBlueH");
                 case FigureType.Green:
-                    uriSource = new Uri(@"pack://application:,,,/img/LineGreenH.png");
-                    return new BitmapImage(uriSource);
+                    return GetBitmapImage("LineGreenH");
                 case FigureType.Yellow:
-                    uriSource = new Uri(@"pack://application:,,,/img/LineYellowH.png");
-                    return new BitmapImage(uriSource);
+                    return GetBitmapImage("LineYellowH");
                 case FigureType.Pink:
-                    uriSource = new Uri(@"pack://application:,,,/img/LinePinkH.png");
-                    return new BitmapImage(uriSource);
+                    return GetBitmapImage("LinePinkH");
                 default:
-                    uriSource = new Uri(@"pack://application:,,,/img/Line.png");
-                    return new BitmapImage(uriSource);
+                    return GetBitmapImage("Line");
             }
         }
     }

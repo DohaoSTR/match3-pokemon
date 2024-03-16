@@ -2,9 +2,10 @@
 
 namespace Match3.Model
 {
-    public struct Vector2
+    public readonly struct Vector2
     {
         public static readonly Vector2 NullObject = new Vector2(-1, -1);
+
         public int X { get; }
         public int Y { get; }
 

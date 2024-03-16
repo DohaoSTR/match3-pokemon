@@ -3,16 +3,10 @@ using System.Threading.Tasks;
 
 namespace Match3.Model
 {
-    public enum GameState
-    {
-        FirstClick,
-        SecondClick,
-        Animation
-    }
-
     public class Game
     {
         public static bool IsInitialized { get; private set; } = false;
+
         private static int _score;
         private readonly GameWindow _window;
         private readonly GameGrid _gameGrid;
@@ -53,9 +47,11 @@ namespace Match3.Model
                 {
                     _state = GameState.Animation;
                     SwapFigures(position);
+
                     await Task.Delay(SwapDelayMilliseconds);
                     _window.SetVisuals();
                     await Task.Delay(VisualsDelayMilliseconds);
+
                     if (_gameGrid.TryMatch(_selected, position))
                     {
                         _window.MarkDeselected(_selected);
@@ -97,6 +93,7 @@ namespace Match3.Model
                 {
                     _window.MarkDeselected(_selected);
                 }
+
                 _selected = Vector2.NullObject;
                 _state = GameState.FirstClick;
             }
@@ -108,6 +105,7 @@ namespace Match3.Model
             {
                 _gameGrid.RandomFill();
             }
+
             IsInitialized = true;
         }
 
